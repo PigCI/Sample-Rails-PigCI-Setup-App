@@ -2,6 +2,13 @@ ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
 require 'rails/test_help'
 
+require 'pig_ci'
+PigCI.start do |config|
+  # When you connect your project, you'll be given an API key.
+  config.api_key = ENV['PIG_CI_KEY']
+  config.during_setup_make_blank_application_request = false
+end
+
 class ActiveSupport::TestCase
   # Run tests in parallel with specified workers
   parallelize(workers: :number_of_processors)

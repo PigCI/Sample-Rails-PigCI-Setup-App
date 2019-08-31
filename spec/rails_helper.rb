@@ -59,3 +59,10 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 end
+
+require 'pig_ci'
+PigCI.start do |config|
+  # When you connect your project, you'll be given an API key.
+  config.api_key = ENV['PIG_CI_KEY']
+  config.during_setup_make_blank_application_request = false
+end
