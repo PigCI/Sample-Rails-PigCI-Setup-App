@@ -3,10 +3,7 @@ require_relative '../config/environment'
 require 'rails/test_help'
 
 require 'pig_ci'
-PigCI.start do |config|
-  # When you connect your project, you'll be given an API key.
-  config.api_key = ENV['PIG_CI_KEY']
-end
+PigCI.start
 
 class ActiveSupport::TestCase
   # Run tests in parallel with specified workers
