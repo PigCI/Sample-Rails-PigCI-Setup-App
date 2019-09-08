@@ -51,7 +51,7 @@ group :test do
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
 
-  gem 'pig-ci-rails', path: '../pig-ci-rails'
+  gem 'pig-ci-rails'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
