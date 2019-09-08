@@ -2,6 +2,8 @@
 sudo: required
 cache:
   node: true
+  bundler: true
+  yarn: true
   directories:
     - vendor/bundle
     - node_modules
