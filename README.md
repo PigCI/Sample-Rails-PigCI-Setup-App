@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/PigCI/Sample-Rails-PigCI-Setup-App.svg?branch=master)](https://travis-ci.com/PigCI/Sample-Rails-PigCI-Setup-App)
+
 # README
 
 This README would normally document whatever steps are necessary to get the
