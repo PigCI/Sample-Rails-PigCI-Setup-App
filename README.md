@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.com/PigCI/Sample-Rails-PigCI-Setup-App.svg?branch=master)](https://travis-ci.com/PigCI/Sample-Rails-PigCI-Setup-App)
+[![CircleCI](https://circleci.com/gh/PigCI/Sample-Rails-PigCI-Setup-App/tree/master.svg?style=svg)](https://circleci.com/gh/PigCI/Sample-Rails-PigCI-Setup-App/tree/master)
 
 # README
 
