@@ -58,7 +58,9 @@ jobs:
               circleci tests split --split-by=timings)"
 
             bundle exec rspec \
+              --profile 10 \
               --format progress \
+              --format RspecJunitFormatter \
               --out /tmp/test-results/rspec.xml \
               --format progress \
               $TEST_FILES
