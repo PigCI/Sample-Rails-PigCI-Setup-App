@@ -252,7 +252,6 @@ DEPENDENCIES
   rails (~> 6.0.0)
   rspec-rails (~> 3.8)
   rspec_junit_formatter
-  sass-rails (~> 5)
   sass-rails (~> 6)
   selenium-webdriver
   spring

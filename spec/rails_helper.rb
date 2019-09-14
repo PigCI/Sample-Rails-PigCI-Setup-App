@@ -63,5 +63,7 @@ end
 require 'pig_ci'
 PigCI.start do |config|
   # When you connect your project, you'll be given an API key.
+  # This allows you to fail PRs which exceed a preset threshold.
+  # If no API key is present, PigCI will run but not be able to pass/fail PRs on GitHub.
   config.api_key = ENV['PIG_CI_KEY']
-end
+end if RSpec.configuration.files_to_run.count > 1

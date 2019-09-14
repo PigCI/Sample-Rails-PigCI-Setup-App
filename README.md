@@ -1,27 +1,51 @@
 [![Build Status](https://travis-ci.com/PigCI/Sample-Rails-PigCI-Setup-App.svg?branch=master)](https://travis-ci.com/PigCI/Sample-Rails-PigCI-Setup-App)
 [![CircleCI](https://circleci.com/gh/PigCI/Sample-Rails-PigCI-Setup-App/tree/master.svg?style=svg)](https://circleci.com/gh/PigCI/Sample-Rails-PigCI-Setup-App/tree/master)
 
-# README
+# Sample Rails [PigCI](https://pigci.com) Setup
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a sample app for demonstrating how to setup the [pig-ci-rails](https://github.com/PigCI/pig-ci-rails) gem in your Ruby on Rails application, so you can monitor key metrics of your test suite.
 
-Things you may want to cover:
+Once setup, PigCI will monitor your app during when you run the test suite. Once the tests are complete it will output the key stats to terminal & to the `/pig-ci` folder.
 
-* Ruby version
+## Getting Setup
 
-* System dependencies
+### Add the gem
 
-* Configuration
+Add the gem to your Gemfile:
 
-* Database creation
+```ruby
+group :test do
+  gem 'pig-ci-rails'
+end
+```
 
-* Database initialization
+### Update Gitignore
 
-* How to run the test suite
+Ignore the `pig-ci` folder, which is where metrics are saved for review after tests are ran by updating `.gitignore` with:
 
-* Services (job queues, cache servers, search engines, etc.)
+```text
+# PigCI
+/pig-ci
+```
 
-* Deployment instructions
+### Setup for RSpec
 
-* ...
+Update `spec/rails_helper.rb` with the following:
+
+```ruby
+require 'pig_ci'
+PigCI.start do |config|
+  # When you connect your project to pigci.com, you'll be given an API key.
+  # This allows you to fail PRs which exceed a preset threshold.
+  # If no API key is present, PigCI will run but not be able to pass/fail PRs on GitHub.
+  config.api_key = ENV['PIG_CI_KEY']
+end if RSpec.configuration.files_to_run.count > 1
+```
+
+I suggest storing the `api_key` value in an environment variable, as it'll allow as you to only pass/fail PRs when data is sent from a specific environment (e.g. Travis-CI, CircleCI or Codeship).
+
+## Configuring Travis-CI
+
+I've setup a sample [.travis.yml](https://github.com/PigCI/Sample-Rails-PigCI-Setup-App/blob/master/.travis.yml) file, once you've added that to you repo you should be add `PIG_CI_KEY` to travis-ci environment settings to send data to pigci.com.
+
+![Travis CI environment configuration](https://user-images.githubusercontent.com/325384/64908904-3ffb1400-d6fd-11e9-9044-041f2f66315f.png)
