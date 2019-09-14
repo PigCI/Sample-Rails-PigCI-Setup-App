@@ -3,6 +3,9 @@
 
 # Sample Rails [PigCI](https://pigci.com) Setup
 
+![Sample Output of PigCI in TravisCI](https://user-images.githubusercontent.com/325384/64909005-7b4a1280-d6fe-11e9-8a1f-c40d21eeb4a7.png)
+
+
 This is a sample app for demonstrating how to setup the [pig-ci-rails](https://github.com/PigCI/pig-ci-rails) gem in your Ruby on Rails application, so you can monitor key metrics of your test suite.
 
 Once setup, PigCI will monitor your app during when you run the test suite. Once the tests are complete it will output the key stats to terminal & to the `/pig-ci` folder.
