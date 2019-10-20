@@ -7,7 +7,7 @@ jobs:
   build:
     docker:
       # specify the version you desire here
-      - image: circleci/ruby:2.6.4-node-browsers
+      - image: circleci/ruby:2.6.5-node-browsers
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
@@ -33,6 +33,7 @@ jobs:
             gem install bundler
             bundle install --jobs=4 --retry=3 --path vendor/bundle
             yarn
+            bundle exec rake assets:precompile RAILS_ENV=test
 
       - save_cache:
           paths:
@@ -45,9 +46,6 @@ jobs:
       # Database setup
       - run: bundle exec rake db:create
       - run: bundle exec rake db:schema:load
-
-      # Precompile assets (so no test takes longer due to compiling assets)
-      - run: bundle exec rake assets:precompile RAILS_ENV=test
 
       # run tests!
       - run:
