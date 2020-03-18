@@ -66,4 +66,14 @@ PigCI.start do |config|
   # This allows you to fail PRs which exceed a preset threshold.
   # If no API key is present, PigCI will run but not be able to pass/fail PRs on GitHub.
   config.api_key = ENV['PIG_CI_KEY']
+
+  # Setup your thresholds if you don't like the defaults
+  # Maximum memory in megabytes
+  config.thresholds.memory = 300
+
+  # Maximum time per a HTTP request
+  config.thresholds.request_time = 200
+
+  # Maximum database calls per a request
+  config.thresholds.database_request = 15
 end if RSpec.configuration.files_to_run.count > 1
