@@ -3,7 +3,7 @@
 
 # Sample Rails [PigCI](https://pigci.com) Setup
 
-![Sample Output of PigCI in TravisCI](https://user-images.githubusercontent.com/325384/64909005-7b4a1280-d6fe-11e9-8a1f-c40d21eeb4a7.png)
+![Sample Output of PigCI in TravisCI](https://user-images.githubusercontent.com/325384/78711087-545b6400-790e-11ea-96b7-bb75c119914a.png)
 
 
 This is a sample app for demonstrating how to setup the [pig-ci-rails](https://github.com/PigCI/pig-ci-rails) gem in your Ruby on Rails application, so you can monitor key metrics of your test suite.
