@@ -1,0 +1,42 @@
+---
+# Docker Compose 2.4 is for local development
+# https://www.heroku.com/podcasts/codeish/57-discussing-docker-containers-and-kubernetes-with-a-docker-captain - Source on that.
+version: '2.4'
+
+services:
+  app: &app
+    image: sample-rails-pig-ci-setup-app:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: development
+    env_file:
+      - .env
+    command: >
+      bash -c "bundle check || bundle install &&
+      yarn install --check-files"
+    environment:
+      WEBPACKER_DEV_SERVER_HOST: webpacker
+    volumes:
+      - .:/usr/src/app
+      - ~/.docker-data/ruby/2.6.6/bundler:/usr/src/bundler:delegated
+      - rails_cache:/usr/src/app/tmp/cache:delegated
+      - packs:/usr/src/app/public/packs:delegated
+
+  web:
+    <<: *app
+    command: bash -c "rm -rf /usr/src/app/tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    ports:
+      - "3000:3000"
+
+  webpacker:
+    <<: *app
+    command: ./bin/webpack-dev-server
+    environment:
+      WEBPACKER_DEV_SERVER_HOST: 0.0.0.0
+    ports:
+      - '3035:3035'
+
+volumes:
+  rails_cache:
+  packs:

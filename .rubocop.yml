@@ -1,3 +1,4 @@
+---
 AllCops:
   Exclude:
     - db/schema.rb
@@ -9,10 +10,7 @@ AllCops:
 Style/FrozenStringLiteralComment:
   EnforcedStyle: never
 
-Style/BracesAroundHashParameters:
-  EnforcedStyle: context_dependent
-
-Metrics/LineLength:
+Layout/LineLength:
   Max: 120
 
 Style/ClassAndModuleChildren:
