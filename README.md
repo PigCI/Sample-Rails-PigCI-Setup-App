@@ -12,6 +12,14 @@ Once setup, PigCI will monitor your app during when you run the test suite. Once
 
 ## Getting Setup
 
+### With RailsBytes
+
+In terminal, run:
+
+```bash
+$ rails app:template LOCATION='https://railsbytes.com/script/Vdrswr'
+```
+
 ### Add the gem
 
 Add the gem to your Gemfile:
@@ -49,11 +57,3 @@ PigCI.start do |config|
   config.thresholds.database_request = 15
 end if RSpec.configuration.files_to_run.count > 1
 ```
-
-I suggest storing the `api_key` value in an environment variable, as it'll allow as you to only pass/fail PRs when data is sent from a specific environment (e.g. Travis-CI, CircleCI or Codeship).
-
-## Configuring Travis-CI
-
-I've setup a sample [.travis.yml](https://github.com/PigCI/Sample-Rails-PigCI-Setup-App/blob/master/.travis.yml) file, once you've added that to you repo you should be add `PIG_CI_KEY` to travis-ci environment settings to send data to pigci.com.
-
-![Travis CI environment configuration](https://user-images.githubusercontent.com/325384/64908904-3ffb1400-d6fd-11e9-9044-041f2f66315f.png)
